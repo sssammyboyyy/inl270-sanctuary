@@ -1,116 +1,1553 @@
 <!DOCTYPE html>
-<html lang="en" class="scroll-smooth">
+<html lang="en" data-theme="light">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="default">
-  <meta name="theme-color" content="#F9F6F0" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
-  <link rel="manifest" href="manifest.webmanifest">
-  <link rel="apple-touch-icon" href="assets/elder.png">
-  <link rel="icon" type="image/png" href="assets/elder.png">
-
-  <title>INL270 Sanctuary — Indigenous Knowledge</title>
-
-  <!-- Typography: Fraunces (Editorial Serif) & Inter (Sans) -->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+  <meta name="apple-mobile-web-app-title" content="INL270 Sanctuary" />
+  <title>INL270 Sanctuary — Indigenous Knowledge Master Prep</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg-primary: #F9F6F0;
+      --bg-glass: rgba(255, 252, 247, 0.78);
+      --bg-card: #FFFFFF;
+      --bg-subtle: #F0ECE1;
+      --text-primary: #1C1B18;
+      --text-secondary: #5A564C;
+      --text-muted: #8C8678;
+      --ochre: #C86D51;
+      --ochre-soft: rgba(200, 109, 81, 0.12);
+      --sage: #3D5A45;
+      --sage-soft: rgba(61, 90, 69, 0.12);
+      --gold: #B8860B;
+      --gold-soft: rgba(184, 134, 11, 0.12);
+      --border: rgba(28, 27, 24, 0.09);
+      --shadow-sm: 0 4px 20px -2px rgba(28, 27, 24, 0.05);
+      --shadow-md: 0 12px 32px -4px rgba(28, 27, 24, 0.08);
+      --radius-lg: 24px;
+      --radius-md: 16px;
+      --radius-pill: 9999px;
+      --font-serif: 'Fraunces', 'New York', Georgia, serif;
+      --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'SF Pro Text', sans-serif;
+      --transition: all 0.28s cubic-bezier(0.16, 1, 0.3, 1);
+    }
 
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script>
-    tailwind.config = {
-      darkMode: 'class',
-      theme: {
-        extend: {
-          colors: {
-            ochre: {
-              DEFAULT: '#C86D51',
-              dark: '#E08465'
-            },
-            sage: {
-              DEFAULT: '#3D5A45',
-              dark: '#5B8266'
-            }
-          }
-        }
+    [data-theme="dark"] {
+      --bg-primary: #121312;
+      --bg-glass: rgba(24, 26, 24, 0.82);
+      --bg-card: #1B1D1B;
+      --bg-subtle: #242724;
+      --text-primary: #F4F1EA;
+      --text-secondary: #B5B0A4;
+      --text-muted: #78746A;
+      --ochre: #E08266;
+      --ochre-soft: rgba(224, 130, 102, 0.16);
+      --sage: #6B9E78;
+      --sage-soft: rgba(107, 158, 120, 0.16);
+      --gold: #E5B84B;
+      --gold-soft: rgba(229, 184, 75, 0.15);
+      --border: rgba(244, 241, 234, 0.09);
+      --shadow-sm: 0 4px 20px -2px rgba(0, 0, 0, 0.35);
+      --shadow-md: 0 12px 32px -4px rgba(0, 0, 0, 0.5);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      font-family: var(--font-sans);
+      line-height: 1.6;
+      min-height: 100vh;
+      padding-bottom: 110px;
+      transition: background-color 0.35s ease, color 0.35s ease;
+      overflow-x: hidden;
+    }
+
+    /* Essential Mode Overrides */
+    body.essentials-mode .deep-layer {
+      display: none !important;
+    }
+    body.essentials-mode .essential-highlight {
+      border-left: 4px solid var(--ochre);
+      padding-left: 14px;
+      background: var(--ochre-soft);
+      border-radius: 0 12px 12px 0;
+      padding-top: 8px;
+      padding-bottom: 8px;
+    }
+
+    /* Sticky Glass Header */
+    .top-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-glass);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 12px 20px;
+    }
+
+    .nav-inner {
+      max-width: 1080px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-orb {
+      width: 36px;
+      height: 36px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--ochre), var(--sage));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #fff;
+      font-family: var(--font-serif);
+      font-weight: 700;
+      font-size: 1.05rem;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .brand-title {
+      font-family: var(--font-serif);
+      font-weight: 600;
+      font-size: 1.15rem;
+      letter-spacing: -0.02em;
+    }
+
+    .exam-pill {
+      font-size: 0.76rem;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--ochre-soft);
+      color: var(--ochre);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .controls-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .ctrl-btn {
+      appearance: none;
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-primary);
+      padding: 7px 13px;
+      border-radius: var(--radius-pill);
+      font-family: var(--font-sans);
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: var(--transition);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .ctrl-btn:hover {
+      transform: translateY(-1px);
+      border-color: var(--ochre);
+    }
+
+    .ctrl-btn.active-toggle {
+      background: var(--sage);
+      color: #FFFFFF;
+      border-color: var(--sage);
+    }
+
+    .ctrl-btn.ochre-toggle.active-toggle {
+      background: var(--ochre);
+      color: #FFFFFF;
+      border-color: var(--ochre);
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 24px 20px;
+    }
+
+    /* Hero Banner with Watercolor Integration */
+    .hero-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 28px;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow-md);
+      display: grid;
+      grid-template-columns: 1.35fr 0.65fr;
+      gap: 24px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    @media (max-width: 768px) {
+      .hero-card {
+        grid-template-columns: 1fr;
+        padding: 22px;
       }
-    };
-  </script>
+    }
 
-  <!-- Custom Stylesheet -->
-  <link rel="stylesheet" href="app.css">
+    .hero-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      font-size: 0.74rem;
+      font-weight: 700;
+      color: var(--sage);
+      margin-bottom: 8px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-title {
+      font-family: var(--font-serif);
+      font-size: clamp(1.65rem, 3vw, 2.35rem);
+      line-height: 1.18;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .hero-sub {
+      color: var(--text-secondary);
+      font-size: 0.95rem;
+      margin-bottom: 18px;
+    }
+
+    .progress-strip {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: var(--bg-subtle);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+    }
+
+    .progress-bar-wrap {
+      flex: 1;
+      height: 8px;
+      background: rgba(0,0,0,0.08);
+      border-radius: 99px;
+      overflow: hidden;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, var(--sage), var(--ochre));
+      border-radius: 99px;
+      transition: width 0.4s ease;
+    }
+
+    .progress-label {
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-primary);
+      white-space: nowrap;
+    }
+
+    .watercolor-gallery {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 10px;
+    }
+
+    .art-frame {
+      position: relative;
+      height: 96px;
+      border-radius: 14px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+      background: linear-gradient(135deg, var(--ochre-soft), var(--sage-soft));
+      display: flex;
+      align-items: flex-end;
+      padding: 8px;
+    }
+
+    .art-frame img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+
+    .art-frame:hover img {
+      transform: scale(1.06);
+    }
+
+    .art-caption {
+      position: relative;
+      z-index: 2;
+      font-size: 0.68rem;
+      font-weight: 700;
+      padding: 3px 8px;
+      border-radius: 8px;
+      background: var(--bg-glass);
+      backdrop-filter: blur(8px);
+      color: var(--text-primary);
+    }
+
+    /* Navigation Tabs */
+    .module-tabs {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-bottom: 26px;
+    }
+
+    @media (max-width: 680px) {
+      .module-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    .tab-btn {
+      padding: 14px 16px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      color: var(--text-secondary);
+      font-family: var(--font-sans);
+      font-weight: 600;
+      font-size: 0.88rem;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 4px;
+      box-shadow: var(--shadow-sm);
+      text-align: left;
+    }
+
+    .tab-btn span.tab-step {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--text-muted);
+    }
+
+    .tab-btn.active {
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      border-color: var(--text-primary);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .tab-btn.active span.tab-step {
+      color: var(--ochre);
+    }
+
+    .tab-panel {
+      display: none;
+      animation: fadeIn 0.32s ease;
+    }
+
+    .tab-panel.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Section Headers */
+    .section-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 20px;
+    }
+
+    .section-header h2 {
+      font-family: var(--font-serif);
+      font-size: 1.55rem;
+      font-weight: 600;
+    }
+
+    .section-header p {
+      color: var(--text-secondary);
+      font-size: 0.9rem;
+    }
+
+    /* Cards Grid */
+    .cards-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 18px;
+    }
+
+    .sanctuary-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 22px;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 14px;
+      position: relative;
+    }
+
+    .sanctuary-card:hover {
+      box-shadow: var(--shadow-md);
+      border-color: rgba(200, 109, 81, 0.35);
+    }
+
+    .sanctuary-card.mastered {
+      border-color: var(--sage);
+      background: linear-gradient(180deg, var(--bg-card) 0%, var(--sage-soft) 100%);
+    }
+
+    .card-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      padding: 4px 10px;
+      border-radius: var(--radius-pill);
+      background: var(--bg-subtle);
+      color: var(--text-secondary);
+    }
+
+    .badge.ochre { background: var(--ochre-soft); color: var(--ochre); }
+    .badge.sage { background: var(--sage-soft); color: var(--sage); }
+    .badge.gold { background: var(--gold-soft); color: var(--gold); }
+
+    .card-actions {
+      display: flex;
+      gap: 6px;
+    }
+
+    .icon-btn {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border);
+      background: var(--bg-subtle);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: var(--transition);
+    }
+
+    .icon-btn:hover {
+      background: var(--ochre);
+      color: #fff;
+      border-color: var(--ochre);
+    }
+
+    .icon-btn.check-btn.checked {
+      background: var(--sage);
+      color: #fff;
+      border-color: var(--sage);
+    }
+
+    .card-title {
+      font-family: var(--font-serif);
+      font-size: 1.18rem;
+      font-weight: 600;
+      line-height: 1.3;
+    }
+
+    .contrast-pills {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8px;
+    }
+
+    .pill-box {
+      padding: 10px 12px;
+      border-radius: 12px;
+      font-size: 0.82rem;
+    }
+
+    .pill-ik {
+      background: var(--sage-soft);
+      border-left: 3px solid var(--sage);
+    }
+
+    .pill-west {
+      background: var(--bg-subtle);
+      border-left: 3px solid var(--text-muted);
+    }
+
+    .pill-box strong {
+      display: block;
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 3px;
+      opacity: 0.85;
+    }
+
+    .proof-box {
+      background: var(--bg-subtle);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.85rem;
+      color: var(--text-secondary);
+    }
+
+    .proof-box strong {
+      color: var(--text-primary);
+    }
+
+    .keyword-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      padding-top: 4px;
+    }
+
+    .kw-tag {
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 3px 9px;
+      border-radius: 6px;
+      background: var(--ochre-soft);
+      color: var(--ochre);
+    }
+
+    /* Agrawal Trap Callout */
+    .trap-banner {
+      background: linear-gradient(135deg, var(--ochre-soft), var(--gold-soft));
+      border: 1px solid var(--ochre);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .trap-banner h3 {
+      font-family: var(--font-serif);
+      font-size: 1.15rem;
+      color: var(--ochre);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    /* Dilemma Interactive Reveal */
+    .reveal-btn {
+      width: 100%;
+      padding: 10px 14px;
+      border-radius: 12px;
+      border: 1px dashed var(--ochre);
+      background: var(--ochre-soft);
+      color: var(--ochre);
+      font-weight: 700;
+      font-size: 0.82rem;
+      cursor: pointer;
+      transition: var(--transition);
+      text-align: center;
+    }
+
+    .reveal-btn:hover {
+      background: var(--ochre);
+      color: #fff;
+    }
+
+    .examiner-lens {
+      display: none;
+      background: var(--sage-soft);
+      border: 1px solid var(--sage);
+      padding: 12px 14px;
+      border-radius: 12px;
+      font-size: 0.84rem;
+      margin-top: 6px;
+    }
+
+    .examiner-lens.open {
+      display: block;
+      animation: fadeIn 0.25s ease;
+    }
+
+    /* Essay Forge */
+    .forge-layout {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 22px;
+    }
+
+    @media (max-width: 860px) {
+      .forge-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .paragraph-step {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      margin-bottom: 12px;
+      transition: var(--transition);
+    }
+
+    .paragraph-step:hover {
+      border-color: var(--sage);
+    }
+
+    .step-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 8px;
+    }
+
+    .step-num {
+      font-family: var(--font-serif);
+      font-weight: 700;
+      color: var(--ochre);
+      font-size: 0.95rem;
+    }
+
+    .live-essay-output {
+      position: sticky;
+      top: 88px;
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-md);
+      max-height: calc(100vh - 120px);
+      overflow-y: auto;
+    }
+
+    .essay-actions {
+      display: flex;
+      gap: 10px;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+    }
+
+    .primary-action-btn {
+      flex: 1;
+      padding: 12px 16px;
+      border-radius: 12px;
+      border: none;
+      background: var(--ochre);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.86rem;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: var(--transition);
+    }
+
+    .primary-action-btn.sage-btn {
+      background: var(--sage);
+    }
+
+    .primary-action-btn:hover {
+      opacity: 0.92;
+      transform: translateY(-1px);
+    }
+
+    /* Toast Notification */
+    .toast {
+      position: fixed;
+      bottom: 28px;
+      right: 28px;
+      background: var(--text-primary);
+      color: var(--bg-primary);
+      padding: 12px 20px;
+      border-radius: var(--radius-pill);
+      font-size: 0.85rem;
+      font-weight: 600;
+      box-shadow: var(--shadow-md);
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(12px);
+      transition: var(--transition);
+      z-index: 999;
+    }
+
+    .toast.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  </style>
 </head>
-<body class="antialiased select-none pb-28">
+<body>
 
-  <!-- Ambient Background Glows -->
-  <div class="ambient-glow-1"></div>
-  <div class="ambient-glow-2"></div>
-
-  <!-- Sticky Minimal Frosted Header -->
-  <header class="sticky top-0 z-40 w-full glass-dock border-b border-stone-200/50 dark:border-stone-800/80 px-4 sm:px-6 h-16 flex items-center justify-between">
-    <!-- Branding & Exam Badge -->
-    <div class="flex items-center gap-3">
-      <div class="w-8 h-8 rounded-xl bg-[#C86D51]/10 dark:bg-[#E08465]/15 grid place-items-center text-base">
-        🌿
-      </div>
-      <div>
-        <div class="flex items-center gap-2">
-          <span class="font-serif-editorial font-bold text-base sm:text-lg tracking-tight">SANCTUARY</span>
-          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-200/60 dark:bg-stone-800 text-stone-600 dark:text-stone-300">
-            INL270
-          </span>
+  <!-- Top Sanctuary Navigation -->
+  <header class="top-nav">
+    <div class="nav-inner">
+      <div class="brand">
+        <div class="brand-orb">IK</div>
+        <div>
+          <div class="brand-title">INL270 Sanctuary</div>
+          <div class="exam-pill" id="countdown-pill">⏳ 16 Oct 12:30 • Lockout 12:40</div>
         </div>
-        <p class="text-[10px] text-stone-500 dark:text-stone-400 font-medium hidden sm:block">
-          Semester Test 2 · Friday 16 Oct, 12:30
-        </p>
       </div>
-    </div>
 
-    <!-- Controls (Essentials Filter, Audio, Dark Mode) -->
-    <div class="flex items-center gap-2">
-      <!-- Essentials Only Pill -->
-      <button id="btnEssentials" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-[#3D5A45] transition tap-bounce shadow-2xs">
-        <span>🌿</span> <span class="hidden sm:inline">Essentials Only</span>
-      </button>
-
-      <!-- Audio Mute Toggle -->
-      <button id="btnAudioToggle" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-[#C86D51] transition tap-bounce shadow-2xs">
-        🔔 Sound On
-      </button>
-
-      <!-- Dark Mode Switcher -->
-      <button id="btnDarkToggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-stone-500 transition tap-bounce shadow-2xs">
-        🌙
-      </button>
+      <div class="controls-bar">
+        <button class="ctrl-btn" id="btn-essentials" onclick="toggleEssentials()" title="Strip to 1 sentence + 3 keywords per card">
+          🌿 Essentials Only
+        </button>
+        <button class="ctrl-btn ochre-toggle" id="btn-voice" onclick="readActiveSection()" title="Read current view aloud like a radio script">
+          🎙️ Studio Narrator
+        </button>
+        <button class="ctrl-btn" id="btn-bowl" onclick="playSingingBowl(true)" title="Play calming 432Hz harmonic singing bowl">
+          🥣 Singing Bowl
+        </button>
+        <button class="ctrl-btn" id="btn-theme" onclick="toggleTheme()" title="Switch Light / Obsidian Dark Mode">
+          🌙 Dark
+        </button>
+      </div>
     </div>
   </header>
 
-  <!-- Dynamic Content Container -->
-  <main id="appContent" class="relative z-10 pt-4 sm:pt-6">
-    <!-- Populated dynamically by app.js -->
+  <main class="container">
+    <!-- Hero Sanctuary Header -->
+    <section class="hero-card">
+      <div>
+        <div class="hero-eyebrow">✨ Curated Study Sanctuary • Audited Edition</div>
+        <h1 class="hero-title">Breathe. Every mark on tomorrow’s paper lives right here.</h1>
+        <p class="hero-sub">
+          Engineered for effortless recall: tap any speaker icon 🔊 to hear the broadcast-ready voiceover, toggle <strong>🌿 Essentials Only</strong> if you want pure keywords, and check off cards ✓ as they lock into memory.
+        </p>
+        <div class="progress-strip">
+          <div class="progress-bar-wrap">
+            <div class="progress-bar-fill" id="mastery-fill"></div>
+          </div>
+          <div class="progress-label" id="mastery-text">0 / 28 Mastered</div>
+        </div>
+      </div>
+
+      <div class="watercolor-gallery">
+        <div class="art-frame">
+          <img src="./elder.png" alt="Elder Custodianship" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='./assets/elder.png';}else{this.style.display='none';}" />
+          <span class="art-caption">1. Oral Custodianship</span>
+        </div>
+        <div class="art-frame">
+          <img src="./transfer.png" alt="Intergenerational Transfer" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='./assets/transfer.png';}else{this.style.display='none';}" />
+          <span class="art-caption">2. Living Transmission</span>
+        </div>
+        <div class="art-frame">
+          <img src="./women.png" alt="Women Custodians" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='./assets/women.png';}else{this.style.display='none';}" />
+          <span class="art-caption">3. Women's Domain</span>
+        </div>
+        <div class="art-frame">
+          <img src="./yurt.png" alt="In-Situ Ecology" onerror="if(!this.dataset.retry){this.dataset.retry=1;this.src='./assets/yurt.png';}else{this.style.display='none';}" />
+          <span class="art-caption">4. In-Situ Sanctuary</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Pillar Navigation -->
+    <nav class="module-tabs">
+      <button class="tab-btn active" onclick="switchTab('paradigms', this)">
+        <span class="tab-step">Pillar 01 • 3 Min</span>
+        <strong>🧭 Paradigm Compass</strong>
+      </button>
+      <button class="tab-btn" onclick="switchTab('dilemmas', this)">
+        <span class="tab-step">Pillar 02 • Scenarios</span>
+        <strong>⚖️ 10 Exam Dilemmas</strong>
+      </button>
+      <button class="tab-btn" onclick="switchTab('thinkers', this)">
+        <span class="tab-step">Pillar 03 • Citations</span>
+        <strong>🏛️ Thinkers & Policies</strong>
+      </button>
+      <button class="tab-btn" onclick="switchTab('forge', this)">
+        <span class="tab-step">Pillar 04 • 25 Marks</span>
+        <strong>✍️ The Essay Forge</strong>
+      </button>
+    </nav>
+
+    <!-- TAB 1: PARADIGM COMPASS -->
+    <section id="tab-paradigms" class="tab-panel active">
+      <div class="trap-banner">
+        <h3>⚠️ The Examiner's Trap: Arun Agrawal (1995 & 1996)</h3>
+        <p class="essential-highlight">
+          <strong>Never just list differences between IK and Western Science!</strong> Always state the contrast first, then pivot: <em>"However, Arun Agrawal (1995) proves this binary collapses on substantive, methodological, and contextual grounds—the real divide is not epistemological, but their relationship to power (Agrawal 1996)."</em>
+        </p>
+      </div>
+
+      <div class="section-header">
+        <div>
+          <h2>The 8 Conceptual Contrast Pairs</h2>
+          <p>Every short conceptual question and essay theory paragraph draws from these 8 pairs.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="paradigms-grid"></div>
+    </section>
+
+    <!-- TAB 2: DILEMMA SIMULATOR -->
+    <section id="tab-dilemmas" class="tab-panel">
+      <div class="section-header">
+        <div>
+          <h2>The 10 High-Yield Case Dilemmas</h2>
+          <p>Ranked by exam probability. Each card holds the exact case name, dollar figure, or legal outcome markers tick.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="dilemmas-grid"></div>
+    </section>
+
+    <!-- TAB 3: THINKERS & POLICIES -->
+    <section id="tab-thinkers" class="tab-panel">
+      <div class="section-header">
+        <div>
+          <h2>Scholars, Policies & Global Organisations</h2>
+          <p>Attach a scholar or treaty name to every claim in your long essay to maximize rubric ticks.</p>
+        </div>
+      </div>
+
+      <div class="cards-grid" id="thinkers-grid"></div>
+    </section>
+
+    <!-- TAB 4: THE ESSAY FORGE -->
+    <section id="tab-forge" class="tab-panel">
+      <div class="section-header">
+        <div>
+          <h2>The 8-Paragraph House Essay Skeleton</h2>
+          <p>Built on the official INL270 Venezuela sample essay structure + the Bavikatte (2014) reflection finisher.</p>
+        </div>
+      </div>
+
+      <div class="forge-layout">
+        <div id="essay-steps-container"></div>
+
+        <aside class="live-essay-output">
+          <h3 style="font-family: var(--font-serif); margin-bottom: 10px;">📋 Ready-to-Write Master Blueprint</h3>
+          <p style="font-size: 0.84rem; color: var(--text-secondary); margin-bottom: 14px;">
+            Copy this structured blueprint into Apple Notes or tap "Read Essay Script" to listen to the complete argument flow.
+          </p>
+          <div class="essay-actions">
+            <button class="primary-action-btn" onclick="copyEssayToNotes()">
+              📎 Copy to Apple Notes
+            </button>
+            <button class="primary-action-btn sage-btn" onclick="speakFullEssay()">
+              🔊 Read Essay Script
+            </button>
+          </div>
+          <div id="compiled-essay-preview" style="font-size: 0.85rem; display: flex; flex-direction: column; gap: 12px;"></div>
+        </aside>
+      </div>
+    </section>
   </main>
 
-  <!-- Fixed Apple-Grade Floating Dock (Bottom Navigation) -->
-  <nav class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-md glass-dock rounded-full p-1.5 flex items-center justify-between border border-stone-200/70 dark:border-stone-800">
-    <button data-tab-target="compass" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-bold transition tap-bounce text-[#C86D51] dark:text-[#E08465]">
-      <span class="text-sm">🧭</span>
-      <span>Compass</span>
-    </button>
-    <button data-tab-target="dilemmas" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 transition tap-bounce hover:text-stone-900 dark:hover:text-stone-100">
-      <span class="text-sm">⚖️</span>
-      <span>Dilemmas</span>
-    </button>
-    <button data-tab-target="essay" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 transition tap-bounce hover:text-stone-900 dark:hover:text-stone-100">
-      <span class="text-sm">✍️</span>
-      <span>Essay Forge</span>
-    </button>
-  </nav>
+  <div class="toast" id="toast">Copied to clipboard!</div>
 
-  <!-- Load Data & Application Logic -->
-  <script src="data.js"></script>
-  <script src="app.js"></script>
+  <script>
+    // ==========================================
+    // 1. AUDITED INL270 CURRICULUM DATA
+    // ==========================================
+    const PARADIGMS = [
+      {
+        id: 'p1',
+        title: '1. Relational Holism vs. Cartesian Dualism',
+        ik: 'Body, mind, soul, spirit, community, and Land form one indivisible moral web.',
+        west: 'Mind/matter and nature/culture splits; treats land and biology as inert commodities.',
+        essential: 'IK unites body, spirit, community, and Land in one moral web, whereas Western science splits nature from culture.',
+        proof: 'Emeagwali & Dei (2014): AIK recognizes "the holistic, organic, and multidimensional interconnections of body, mind, soul, and spirit, as well as the interface of society, culture, and Nature."',
+        keywords: ['Relational ontology', 'Holism', 'Emeagwali & Dei (2014)']
+      },
+      {
+        id: 'p2',
+        title: '2. Dynamic Experimentation vs. Static Lore Myth',
+        ik: 'Continuously innovated through lived experimentation, farmer trials, and external exchange.',
+        west: 'Colonial anthropology falsely froze IK as timeless, closed, and unchanging.',
+        essential: 'IK is a dynamic cycle of local experimentation and innovation, refuting the colonial myth of static tradition.',
+        proof: 'Warren (1991) & Flavier et al. (1995): IK operates as a continuous feedback loop: IK → Decision Making → Indigenous Organizations → Experimentation & Innovation.',
+        keywords: ['Dynamic systems', 'Indigenous experimentation', 'Warren (1991)']
+      },
+      {
+        id: 'p3',
+        title: '3. Tacit Context-Embeddedness vs. Codified Universalism',
+        ik: 'Tacit, embodied in ritual, apprenticeship, and local ecology; resists raw text extraction.',
+        west: 'Abstracts variables in laboratories claiming context-free universal validity.',
+        essential: 'IK is tacit and embedded in community practices, whereas Western science seeks abstract universal codification.',
+        proof: 'World Bank (1998): IK is "embedded in community practices, institutions, relationships and rituals. It is essentially tacit knowledge that is not easily codifiable."',
+        keywords: ['Tacit knowledge', 'Context-embedded', 'World Bank (1998)']
+      },
+      {
+        id: 'p4',
+        title: '4. Communal Fiduciary Stewardship vs. Individual IP',
+        ik: 'Held collectively across generations under customary law; artists are temporary custodians.',
+        west: 'Grants exclusive, alienable, 20-year economic monopolies to single named inventors.',
+        essential: 'Indigenous custodians hold knowledge in collective trust for the clan, clashing with individual Western copyright and patents.',
+        proof: 'Bulun Bulun v R & T Textiles (1998): Australian Federal Court held an indigenous artist owes an equitable fiduciary duty to the Ganalbingu clan to protect sacred waterhole designs.',
+        keywords: ['Fiduciary duty', 'Communal stewardship', 'Bulun Bulun (1998)']
+      },
+      {
+        id: 'p5',
+        title: '5. In-Situ Living Practice vs. Ex-Situ Archival Extraction',
+        ik: 'Preserved by living communities controlling their ancestral land, languages, and resources.',
+        west: 'Extracts and freezes folklore in central databanks ("mausoleums for knowledge").',
+        essential: 'Agrawal’s Archiving Paradox: locking IK in external databases strips its context and serves bioprospectors over local people.',
+        proof: 'Agrawal (1995): Ex-situ archiving "runs contradictory to the very conceptual basis of what is seen to be indigenous... creating a mausoleum for knowledge fixed in time and space."',
+        keywords: ['In-situ preservation', 'Archiving paradox', 'Agrawal (1995)']
+      },
+      {
+        id: 'p6',
+        title: '6. Relational Revocable Consent vs. Transactional Form',
+        ik: 'Consent is collective, ongoing, relational, and revocable if spiritual harm occurs.',
+        west: 'Treats a signed boilerplate waiver as permanent license for secondary research.',
+        essential: 'Legitimate indigenous consent is ongoing, collective, and revocable—never a one-time blanket waiver.',
+        proof: 'Garrison (2013): ASU researchers violated Havasupai autonomy by reusing diabetes blood samples for schizophrenia, inbreeding, and Bering Strait migration studies.',
+        keywords: ['Genomic justice', 'Collective FPIC', 'Havasupai (2010)']
+      },
+      {
+        id: 'p7',
+        title: '7. Methodological Pluralism vs. Demarcation Hierarchy',
+        ik: 'Validates truth through sustained community survival, ecological balance, and healing.',
+        west: 'Erects positivist demarcation walls to dismiss non-Western science as superstition.',
+        essential: 'Philosophy of science failed to find any strict boundary separating science from non-science.',
+        proof: 'Agrawal (1995): From Popper and Carnap to Lakatos and Feyerabend, philosophers of science abandoned any rigid demarcation criterion between science and non-science.',
+        keywords: ['Demarcation problem', 'Popper & Feyerabend', 'Epistemic pluralism']
+      },
+      {
+        id: 'p8',
+        title: '8. Power Asymmetry vs. Epistemic Neutrality',
+        ik: 'Marginalized not due to inferior logic, but due to colonial dispossession and resource exclusion.',
+        west: 'Masks political dominance behind claims of objective scientific neutrality.',
+        essential: 'The decisive difference between IK and Western science is not epistemological, but their relationship to power.',
+        proof: 'Agrawal (1996 Tanggapan): "The critical difference between indigenous and scientific knowledge is not at an epistemological level: rather it lies in their relationship to power."',
+        keywords: ['Relationship to power', 'Tanggapan (1996)', 'Resource control']
+      }
+    ];
+
+    const DILEMMAS = [
+      {
+        id: 'd1',
+        prob: '99% Exam Lock',
+        title: 'D1. The Havasupai Blood Scope-Creep',
+        conflict: 'ASU researchers collected blood from the Havasupai Tribe in Arizona to study Type 2 diabetes, then secretly reused the samples for schizophrenia, inbreeding, and Bering Strait migration studies.',
+        essential: 'Havasupai v. ASU (2010): Unconsented reuse of diabetes blood for migration and mental illness studies resulted in a $700,000 settlement and repatriation of 412 samples.',
+        evidence: 'Outcome (Garrison 2013): $700,000 settlement in April 2010, formal return/reburial of 412 vials to the canyon, and tribal ban on ASU researchers. Migration theories contradicted sacred emergence stories, causing spiritual harm.',
+        lens: 'Examiner Rubric: Contrast legalistic consent forms with collective, ongoing, revocable Free Prior Informed Consent (FPIC) and Genomic Justice.',
+        keywords: ['Genomic justice', 'Spiritual harm', '412 samples / $700k', 'Revocable consent']
+      },
+      {
+        id: 'd2',
+        prob: '95% Exam Lock',
+        title: 'D2. The Aboriginal Carpets Case (Milpurrurru)',
+        conflict: 'An importer manufactured wool carpets in Vietnam reproducing sacred Dreamtime paintings by 8 Aboriginal artists without permission, causing sacrilege when walked upon.',
+        essential: 'Milpurrurru v Indofurn (1994): Court awarded $189,000 for unauthorized Dreamtime carpets, factoring in cultural harm alongside copyright infringement.',
+        evidence: 'Case (Janke 2003): Milpurrurru & Ors v Indofurn Pty Ltd (1994) 30 IPR 209. Justice von Doussa awarded $189,000 including flagrancy damages for "culturally-based harm," though statutory copyright still could not compensate the clan directly.',
+        lens: 'Examiner Rubric: Use this to show both the partial accommodation of copyright law (cultural harm damages) and its structural limit (no communal clan standing).',
+        keywords: ['Milpurrurru (1994)', 'Cultural harm', '$189,000 damages', 'Terri Janke']
+      },
+      {
+        id: 'd3',
+        prob: '95% Exam Lock',
+        title: 'D3. Clan Custodianship vs. Individual Artist (Bulun Bulun)',
+        conflict: 'Textile firm copied John Bulun Bulun’s sacred painting "Atunypa" (Magpie Geese and Water Lilies at the Waterhole). The Ganalbingu clan claimed collective ownership.',
+        essential: 'Bulun Bulun v R & T Textiles (1998): Court established an equitable fiduciary duty binding an indigenous artist to protect sacred clan designs.',
+        evidence: 'Case (Janke 2003): Bulun Bulun v R & T Textiles (1998) 41 IPR 513. While the Copyright Act recognized only Bulun Bulun as author, equity imposed a fiduciary obligation on him toward the Ganalbingu people.',
+        lens: 'Examiner Rubric: Highlight "Fiduciary Duty" as the legal bridge between individual Western authorship and communal customary law.',
+        keywords: ['Bulun Bulun (1998)', 'Fiduciary duty', 'Ganalbingu clan', 'Customary law']
+      },
+      {
+        id: 'd4',
+        prob: '92% Exam Lock',
+        title: 'D4. Biopiracy of Forest Remedies (Curare & Hoodia)',
+        conflict: 'Pharmaceutical corporations isolate active compounds from Amazonian arrow poison (Curare) or San appetite suppressant (Hoodia), patenting derivatives without royalties.',
+        essential: 'Biopiracy exploits patent law’s novelty test to monopolize indigenous remedies like Venezuelan Curare and San Hoodia without benefit-sharing.',
+        evidence: 'Case (Sample Essay / Dutfield 2020): Amazonian Yanomami knowledge of Chondrodendron tomentosum yielded d-tubocurarine surgical muscle relaxants. Patents rewarded lab isolation while ignoring centuries of ethnobotanical discovery.',
+        lens: 'Examiner Rubric: Invoke the Nagoya Protocol (PIC + Mutually Agreed Terms + Access and Benefit-Sharing) and defensive prior-art databases.',
+        keywords: ['Biopiracy', 'Curare / Hoodia', 'Nagoya Protocol', 'Prior Informed Consent']
+      },
+      {
+        id: 'd5',
+        prob: '90% Exam Lock',
+        title: 'D5. The Digitization Trap vs. India’s TKDL',
+        conflict: 'A university puts elders’ medicinal formulas on an open website "to save them," inadvertently handing free chemical leads to corporate bioprospectors.',
+        essential: 'Open-access digitization invites biopiracy; India’s TKDL solves this by restricting database access strictly to international patent examiners.',
+        evidence: 'Case (Hunter 2005 & Sample Essay): India’s Traditional Knowledge Digital Library (TKDL) translated 34 million pages of Ayurvedic/Unani texts into 5 languages exclusively for patent offices (EPO/USPTO) as prior art, revoking Turmeric and Neem patents.',
+        lens: 'Examiner Rubric: Pair Agrawal’s Archiving Paradox with TKDL defensive publication and Jane Hunter’s role-based access tiers.',
+        keywords: ['TKDL', 'Defensive publication', 'Prior art shield', 'Archiving paradox']
+      },
+      {
+        id: 'd6',
+        prob: '88% Exam Lock',
+        title: 'D6. Decolonizing the Curriculum (Model A vs. Model B)',
+        conflict: 'University faculties resist integrating African metallurgy, chemistry, and ethnomathematics, dismissing them as non-science.',
+        essential: 'Emeagwali contrasts passive Eurocentric textbook instruction (Model A) with student-centered, community-engaged decolonial pedagogy (Model B).',
+        evidence: 'Case (Emeagwali 2003/2014 & Semali 1996): Model A makes teachers and students "hostages to text." Model B uses transformative epistemology backed by Nigerian Gwoza 40,000-mile stone terraces (Gwimbe) and Mozambican Tonga basket geometry (Gerdes).',
+        lens: 'Examiner Rubric: Cite Emeagwali (Model A vs B), Edward Shizha (colonial habitus), and Ladi Semali (Nyerere’s Education for Self-Reliance).',
+        keywords: ['Model A vs Model B', 'Hostages to text', 'Gwoza terraces', 'Ladi Semali']
+      },
+      {
+        id: 'd7',
+        prob: '85% Exam Lock',
+        title: 'D7. Virtual Repatriation & Customary Access Tiers',
+        conflict: 'Museums hold sacred ceremonial masks and photographs that under customary law may only be viewed by initiated elders or specific genders.',
+        essential: 'Jane Hunter’s Spiral of Knowledge and Ara Irititja software embed customary clan, gender, and initiation restrictions directly into digital archives.',
+        evidence: 'Case (Hunter 2005): Smithsonian National Museum of the American Indian (NMAI) "Spiral of Knowledge" and Australia’s Ara Irititja system use MPEG-21 / XrML rights markups so elders govern viewing permissions.',
+        lens: 'Examiner Rubric: Contrast naive Western "open access for all" with culturally responsive Indigenous Knowledge Management (IKM) systems.',
+        keywords: ['Virtual repatriation', 'Spiral of Knowledge', 'Ara Irititja', 'Jane Hunter (2005)']
+      },
+      {
+        id: 'd8',
+        prob: '85% Exam Lock',
+        title: 'D8. Geographical Indications for Community Crops (Criollo Cacao)',
+        conflict: 'Global chocolate conglomerates profit off the reputation of Venezuelan Criollo cacao while indigenous cultivators face price exploitation.',
+        essential: 'Geographical Indications (GIs) protect collective, origin-linked crops like Venezuelan Criollo cacao in perpetuity without requiring a single inventor.',
+        evidence: 'Case (Sample Essay / Chávez & Rodríguez 2019): Venezuelan Chuao/Criollo cacao cooperatives use GIs and collective trademarks to keep brand equity anchored to the ancestral territory.',
+        lens: 'Examiner Rubric: In any IP comparison question, prove why GIs beat patents for agricultural/artisanal IK (collective, perpetual, land-tethered).',
+        keywords: ['Geographical Indication', 'Criollo cacao', 'Collective ownership', 'Dutfield (2020)']
+      },
+      {
+        id: 'd9',
+        prob: '80% Exam Lock',
+        title: 'D9. Wikipedia’s Oral Citation Catch-22 (Namibia)',
+        conflict: 'Ovaherero elders in Namibia attempt to correct colonial errors on Wikipedia, but editors delete their contributions for lacking "published secondary citations."',
+        essential: 'Wikipedia’s citation rules create an epistemic Catch-22 where oral indigenous authorities are censored unless validated by Western print publishers.',
+        evidence: 'Case (Winschiers-Theophilus, Mushiba & Gallert 2016): Ovaherero oral historians blocked on Wikipedia; resolved in rural Namibia via co-designed 3D village visualizations with the Ovahimba.',
+        lens: 'Examiner Rubric: Concrete Southern African proof of Agrawal’s power-asymmetry thesis in modern digital architectures.',
+        keywords: ['Oral citation Catch-22', 'Ovaherero & Ovahimba', '3D co-design', 'Winschiers-Theophilus']
+      },
+      {
+        id: 'd10',
+        prob: '80% Exam Lock',
+        title: 'D10. Gendered Erasure vs. Women as Custodians',
+        conflict: 'Development planners consult only male village headmen, bypassing women’s crucial authority over seed selection, obstetrics, and water.',
+        essential: 'Both the World Bank (1998) and South Africa’s 2004 IKS Policy (Section 2.7) recognize women as primary custodians of indigenous health and seed systems.',
+        evidence: 'Case (World Bank 1998 & SA IKS Policy 2004): Rwandan/Colombian women bean breeders out-selected lab scientists; Malicounda (Senegal) women ended FGM; Nigerian Ibo women led postpartum care.',
+        lens: 'Examiner Rubric: Connect gender directly to South Africa’s IKS Policy (Chapter 2.7) and NQF accreditation of traditional practitioners.',
+        keywords: ['Gendered IK', 'SA IKS Policy Sec 2.7', 'Malicounda Senegal', 'Seed stewardship']
+      }
+    ];
+
+    const THINKERS = [
+      {
+        id: 't1',
+        role: 'Rank #1 • Epistemic Anchor',
+        name: 'Arun Agrawal (1995, 1996)',
+        essential: 'Dismantles the IK/Science binary on substantive, methodological, and contextual grounds, proving the true divide is political power.',
+        detail: 'Warns against ex-situ archiving ("mausoleum for knowledge") and insists on in-situ preservation through indigenous control over land and resources.',
+        keywords: ['Substantive/Methodological/Contextual', 'Archiving Paradox', 'Power (Tanggapan)']
+      },
+      {
+        id: 't2',
+        role: 'Rank #2 • Development Pioneer',
+        name: 'D. Michael Warren (1991, 1993)',
+        essential: 'Founded CIKARD and defined IK as local, dynamic decision-making systems driven by indigenous experimentation.',
+        detail: 'Created the circular model of IK innovation and championed national IK resource centres to counter colonial devaluation.',
+        keywords: ['CIKARD', 'Indigenous decision-making', 'Dynamic experimentation']
+      },
+      {
+        id: 't3',
+        role: 'Rank #3 • WIPO Legal Authority',
+        name: 'Terri Janke (2003) — Minding Culture',
+        essential: 'Authored WIPO’s landmark casebook on Australian Aboriginal IP: Milpurrurru (carpets), Bulun Bulun (fiduciary duty), and Authenticity Labels.',
+        detail: 'Demonstrates how certification trademarks, moral rights, and equitable fiduciary duties can partially bridge communal TCE protection.',
+        keywords: ['Minding Culture', 'Milpurrurru & Bulun Bulun', 'NIAAA Authenticity Label']
+      },
+      {
+        id: 't4',
+        role: 'Rank #4 • Decolonial Curriculum',
+        name: 'Gloria Emeagwali & George Dei (2003, 2014)',
+        essential: 'Formulated Model A (Eurocentric textbook hostage) vs. Model B (transformative, student-centered praxis) for African IKS in curricula.',
+        detail: 'Documented endogenous African chemistry (brewing/tanning), Gwoza 40,000-mile terraces (Gwimbe), and Mozambican Tonga math (Gerdes).',
+        keywords: ['Model A vs Model B', 'Decolonizing the Academy', 'Endogenous African science']
+      },
+      {
+        id: 't5',
+        role: 'Rank #5 • Digital KM Architect',
+        name: 'Jane Hunter (2005)',
+        essential: 'Designed the Smithsonian NMAI "Spiral of Knowledge" and MPEG-21/XrML metadata tools to enforce customary access laws in digital archives.',
+        detail: 'Ensures indigenous elders control capture, annotation, and role-based viewing permissions (gender, clan, initiation status).',
+        keywords: ['Spiral of Knowledge', 'MPEG-21 / XrML', 'Ara Irititja']
+      },
+      {
+        id: 't6',
+        role: 'Rank #6 • Bioethics & Genomic Justice',
+        name: 'Nanibaa’ A. Garrison (2013)',
+        essential: 'Chronicled the Havasupai Tribe v. ASU blood case ($700k settlement, 412 samples returned) to establish "genomic justice."',
+        detail: 'Proved that secondary research on migration and mental illness without collective, ongoing consent inflicts severe spiritual and cultural harm.',
+        keywords: ['Genomic justice', 'Havasupai v. ASU', 'Tiered revocable consent']
+      },
+      {
+        id: 't7',
+        role: 'Rank #7 • IP & Biopiracy Critic',
+        name: 'Graham Dutfield (2020) & Darrell Posey (1999)',
+        essential: 'Exposed how patent novelty rules enable biopiracy (Curare), advocating Geographical Indications (GIs) and sui generis regimes.',
+        detail: 'Posey established Traditional Resource Rights and the spiritual inseparability of biodiversity from indigenous worldviews.',
+        keywords: ['Patents vs GIs', 'Sui generis', 'Biopiracy']
+      },
+      {
+        id: 't8',
+        role: 'Rank #8 • Domestic Policy Anchor',
+        name: 'SA IKS Policy (2004) — DST & NIKSO',
+        essential: 'Cabinet-adopted policy integrating IKS into South Africa’s National System of Innovation (NSI) and National Qualifications Framework (NQF).',
+        detail: 'Created the National Office on IKS (NIKSO), IKS Trust, and National Recordal System; explicitly prioritizes women (Sec 2.7) and traditional leaders.',
+        keywords: ['DST & NIKSO', 'NQF Accreditation', 'National Recordal System']
+      },
+      {
+        id: 't9',
+        role: 'Rank #9 • Global Governance',
+        name: 'UNEP, UNESCO LINKS, UNDRIP & Nagoya',
+        essential: 'UNEP 4-country African study (Kenya, Swaziland, SA, Tanzania); UNESCO LINKS; UNDRIP Art. 31; Nagoya Protocol (PIC + MAT + ABS).',
+        detail: 'UNESCO warns formal Western schooling erodes IK; IFLA and Oyelude (2023) guide Libraries, Archives, and Museums (LAMs) on respectful curation.',
+        keywords: ['UNEP 4-Country Study', 'UNDRIP Art 31', 'Nagoya ABS']
+      },
+      {
+        id: 't10',
+        role: 'Rank #10 • Biocultural Finisher',
+        name: 'Kabir Bavikatte (2014) & Ladi Semali (1996)',
+        essential: 'Bavikatte’s "Biocultural Rights" ties IP protection directly to land stewardship; Semali applies Nyerere’s self-reliance to classroom alienation.',
+        detail: 'Brokensha (1996) adds the corporate merger warning: merging unequal knowledge systems without power parity swallows the weaker system.',
+        keywords: ['Biocultural rights', 'Education for Self-Reliance', 'Unequal merger']
+      }
+    ];
+
+    const ESSAY_STEPS = [
+      {
+        step: '§1. Introduction & Roadmap (3 Marks)',
+        scholar: 'Warren (1991), Flavier et al. (1995), WIPO (2023)',
+        essential: 'Define IK as dynamic, tacit, community-held knowledge (Warren 1991), contrast with individualistic Western IP/science, and state your 4-part roadmap.',
+        script: 'Indigenous Knowledge refers to the dynamic, tacit, and cumulative body of practices and beliefs developed by local communities across generations, as defined by Warren in 1991 and Flavier in 1995. In contrast, Western intellectual property and scientific regimes prioritize individual authorship, reductionist isolation, and time-limited commercial monopolies. This essay critically evaluates this tension through Agrawal’s power critique, international and South African policy frameworks, comparative legal cases, and decolonial recommendations.'
+      },
+      {
+        step: '§2. Theoretical Engine: Engaging Agrawal (4 Marks)',
+        scholar: 'Arun Agrawal (1995, 1996), Popper & Feyerabend',
+        essential: 'State the classic IK vs. Western contrast, then deploy Agrawal (1995) to show the binary fails substantively, methodologically, and contextually—the true divide is power.',
+        script: 'While traditional theorists separate holistic, oral Indigenous Knowledge from analytical Western science, Arun Agrawal demonstrates in his 1995 critique that this dichotomy collapses on substantive, methodological, and contextual grounds. Citing philosophers of science like Popper and Feyerabend, Agrawal shows no rigid demarcation criterion separates science from non-science. Crucially, in his 1996 Tanggapan response, Agrawal establishes that the real divide is not epistemological, but rooted in asymmetric relations of power and resource control.'
+      },
+      {
+        step: '§3. Institutional & Policy Layer (4 Marks)',
+        scholar: 'SA IKS Policy (2004), WIPO IGC, Nagoya Protocol (2010), UNDRIP',
+        essential: 'Anchor domestically in South Africa’s 2004 IKS Policy (DST, NIKSO, NQF accreditation, women custodians) and globally in UNDRIP Art. 31 and Nagoya ABS.',
+        script: 'At the institutional level, South Africa’s 2004 Indigenous Knowledge Systems Policy, led by the Department of Science and Technology, establishes the National Indigenous Knowledge Systems Office (NIKSO) and integrates IKS into the National Qualifications Framework while recognizing women as primary custodians. Internationally, Article 31 of UNDRIP and the Nagoya Protocol mandate Free Prior Informed Consent, Mutually Agreed Terms, and equitable Access and Benefit-Sharing.'
+      },
+      {
+        step: '§4. Primary Case Application: Jurisprudence & Ethics (5 Marks)',
+        scholar: 'Terri Janke (2003) & Nanibaa’ Garrison (2013)',
+        essential: 'Pair Australian IP case law (Milpurrurru $189k cultural harm; Bulun Bulun equitable fiduciary duty) with the Havasupai blood settlement ($700k, 412 samples).',
+        script: 'The structural mismatch between communal custodianship and Western law is illustrated in Terri Janke’s WIPO case studies. In Milpurrurru versus Indofurn in 1994, the Australian Federal Court awarded 189,000 dollars for unauthorized Dreamtime carpets, recognizing cultural harm, while Bulun Bulun in 1998 imposed an equitable fiduciary duty on indigenous artists toward their clan. Similarly, in bioethics, Garrison documents how Arizona State University repurposed Havasupai diabetes blood samples for migration and schizophrenia studies, leading to a 700,000 dollar settlement and the repatriation of 412 samples in 2010.'
+      },
+      {
+        step: '§5. Comparative Case: Biopiracy vs. Geographical Indications (4 Marks)',
+        scholar: 'Graham Dutfield (2020), Chávez & Rodríguez (2019)',
+        essential: 'Contrast patent biopiracy (Venezuelan Curare / SA Hoodia) with Geographical Indications (Criollo Cacao) which protect collective terroir in perpetuity.',
+        script: 'As Graham Dutfield argues, conventional patents structurally exclude Indigenous Knowledge through strict novelty and single-inventor rules, enabling biopiracy as seen in the pharmaceutical extraction of Venezuelan Curare and Southern African Hoodia. Conversely, Geographical Indications and collective trademarks—exemplified by Venezuelan Criollo cacao and Australia’s Authenticity Labels—align far better with indigenous governance because rights remain collective, perpetual, and bound to ancestral territory.'
+      },
+      {
+        step: '§6. Curation, Risks & Recommendations (3 Marks)',
+        scholar: 'Jane Hunter (2005), Emeagwali (2014), India TKDL',
+        essential: 'Address Agrawal’s Archiving Paradox using India’s closed TKDL prior-art shield, Jane Hunter’s Spiral of Knowledge access tiers, and Emeagwali’s Model B curriculum.',
+        script: 'To overcome Agrawal’s archiving paradox—where open databases expose communities to misappropriation—states should adopt defensive prior-art registries modeled on India’s Traditional Knowledge Digital Library, alongside Jane Hunter’s Spiral of Knowledge metadata tools that enforce customary gender and initiation rules. In education, institutions must replace Eurocentric Model A instruction with Gloria Emeagwali’s transformative Model B pedagogy.'
+      },
+      {
+        step: '§7. Conclusion & The Biocultural Reflection Move (2 Marks)',
+        scholar: 'Kabir Bavikatte (2014), Posey (1999)',
+        essential: 'Conclude that no standalone IP tool suffices; genuine protection requires Kabir Bavikatte’s Biocultural Rights—linking knowledge to in-situ land sovereignty.',
+        script: 'In conclusion, while Geographical Indications, fiduciary duties, and sui generis regimes offer vital defensive shields, no standalone intellectual property instrument can fully capture the living, spiritual nature of Indigenous Knowledge. Drawing on Kabir Bavikatte’s 2014 framework of Biocultural Rights, true safeguarding requires in-situ empowerment: securing indigenous communities’ sovereign control over their ancestral lands, ecosystems, and self-determination.'
+      }
+    ];
+
+    // ==========================================
+    // 2. STATE & STORAGE ENGINE
+    // ==========================================
+    let masteredIds = JSON.parse(localStorage.getItem('inl270_mastered') || '[]');
+    let isEssentials = false;
+    let isSpeaking = false;
+
+    function saveMastery() {
+      localStorage.setItem('inl270_mastered', JSON.stringify(masteredIds));
+      updateProgressUI();
+    }
+
+    function toggleMastery(id, btnEl) {
+      const idx = masteredIds.indexOf(id);
+      if (idx > -1) {
+        masteredIds.splice(idx, 1);
+        btnEl.classList.remove('checked');
+        btnEl.closest('.sanctuary-card').classList.remove('mastered');
+      } else {
+        masteredIds.push(id);
+        btnEl.classList.add('checked');
+        btnEl.closest('.sanctuary-card').classList.add('mastered');
+        playSingingBowl(false);
+      }
+      saveMastery();
+    }
+
+    function updateProgressUI() {
+      const total = PARADIGMS.length + DILEMMAS.length + THINKERS.length;
+      const count = masteredIds.length;
+      const pct = Math.min(100, Math.round((count / total) * 100));
+      document.getElementById('mastery-fill').style.width = pct + '%';
+      document.getElementById('mastery-text').textContent = `${count} / ${total} Mastered (${pct}%)`;
+    }
+
+    // ==========================================
+    // 3. RENDER FUNCTIONS
+    // ==========================================
+    function renderAll() {
+      // Render Paradigms
+      const pGrid = document.getElementById('paradigms-grid');
+      pGrid.innerHTML = PARADIGMS.map(p => {
+        const isDone = masteredIds.includes(p.id);
+        return `
+          <article class="sanctuary-card ${isDone ? 'mastered' : ''}">
+            <div>
+              <div class="card-top">
+                <span class="badge sage">Paradigm Pair</span>
+                <div class="card-actions">
+                  <button class="icon-btn" onclick="speakText('${escapeQuotes(p.title + '. ' + p.essential + ' ' + p.proof)}')" title="Listen to this card">🔊</button>
+                  <button class="icon-btn check-btn ${isDone ? 'checked' : ''}" onclick="toggleMastery('${p.id}', this)" title="Mark mastered">✓</button>
+                </div>
+              </div>
+              <h3 class="card-title" style="margin: 10px 0;">${p.title}</h3>
+              <p class="essential-highlight" style="font-size: 0.9rem; font-weight: 600; margin-bottom: 12px;">
+                ${p.essential}
+              </p>
+              <div class="contrast-pills deep-layer" style="margin-bottom: 12px;">
+                <div class="pill-box pill-ik">
+                  <strong>Indigenous Lens</strong>
+                  ${p.ik}
+                </div>
+                <div class="pill-box pill-west">
+                  <strong>Western Lens</strong>
+                  ${p.west}
+                </div>
+              </div>
+              <div class="proof-box deep-layer">
+                <strong>Source Grounding:</strong> ${p.proof}
+              </div>
+            </div>
+            <div class="keyword-row">
+              ${p.keywords.map(k => `<span class="kw-tag">${k}</span>`).join('')}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Render Dilemmas
+      const dGrid = document.getElementById('dilemmas-grid');
+      dGrid.innerHTML = DILEMMAS.map(d => {
+        const isDone = masteredIds.includes(d.id);
+        return `
+          <article class="sanctuary-card ${isDone ? 'mastered' : ''}">
+            <div>
+              <div class="card-top">
+                <span class="badge ochre">${d.prob}</span>
+                <div class="card-actions">
+                  <button class="icon-btn" onclick="speakText('${escapeQuotes(d.title + '. ' + d.essential + ' ' + d.lens)}')" title="Listen to scenario">🔊</button>
+                  <button class="icon-btn check-btn ${isDone ? 'checked' : ''}" onclick="toggleMastery('${d.id}', this)" title="Mark mastered">✓</button>
+                </div>
+              </div>
+              <h3 class="card-title" style="margin: 10px 0;">${d.title}</h3>
+              <p class="essential-highlight" style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">
+                ${d.essential}
+              </p>
+              <p class="deep-layer" style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 10px;">
+                <strong>The Conflict:</strong> ${d.conflict}
+              </p>
+              <div class="proof-box deep-layer" style="margin-bottom: 10px;">
+                <strong>Concrete Case Evidence:</strong> ${d.evidence}
+              </div>
+              <button class="reveal-btn deep-layer" onclick="this.nextElementSibling.classList.toggle('open')">
+                🎯 Tap to Reveal Examiner's Marking Lens
+              </button>
+              <div class="examiner-lens">
+                ${d.lens}
+              </div>
+            </div>
+            <div class="keyword-row">
+              ${d.keywords.map(k => `<span class="kw-tag">${k}</span>`).join('')}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Render Thinkers
+      const tGrid = document.getElementById('thinkers-grid');
+      tGrid.innerHTML = THINKERS.map(t => {
+        const isDone = masteredIds.includes(t.id);
+        return `
+          <article class="sanctuary-card ${isDone ? 'mastered' : ''}">
+            <div>
+              <div class="card-top">
+                <span class="badge gold">${t.role}</span>
+                <div class="card-actions">
+                  <button class="icon-btn" onclick="speakText('${escapeQuotes(t.name + '. ' + t.essential + ' ' + t.detail)}')" title="Listen">🔊</button>
+                  <button class="icon-btn check-btn ${isDone ? 'checked' : ''}" onclick="toggleMastery('${t.id}', this)" title="Mark mastered">✓</button>
+                </div>
+              </div>
+              <h3 class="card-title" style="margin: 10px 0;">${t.name}</h3>
+              <p class="essential-highlight" style="font-size: 0.9rem; font-weight: 600; margin-bottom: 10px;">
+                ${t.essential}
+              </p>
+              <div class="proof-box deep-layer">
+                ${t.detail}
+              </div>
+            </div>
+            <div class="keyword-row">
+              ${t.keywords.map(k => `<span class="kw-tag">${k}</span>`).join('')}
+            </div>
+          </article>
+        `;
+      }).join('');
+
+      // Render Essay Forge
+      const eSteps = document.getElementById('essay-steps-container');
+      const ePreview = document.getElementById('compiled-essay-preview');
+
+      eSteps.innerHTML = ESSAY_STEPS.map((s, idx) => `
+        <div class="paragraph-step">
+          <div class="step-head">
+            <span class="step-num">${s.step}</span>
+            <button class="icon-btn" onclick="speakText('${escapeQuotes(s.script)}')" title="Read paragraph script aloud">🔊</button>
+          </div>
+          <div style="font-size: 0.78rem; font-weight: 700; color: var(--sage); margin-bottom: 6px;">
+            Cite: ${s.scholar}
+          </div>
+          <p class="essential-highlight" style="font-size: 0.88rem; font-weight: 600; margin-bottom: 8px;">
+            ${s.essential}
+          </p>
+          <p class="deep-layer" style="font-size: 0.85rem; color: var(--text-secondary);">
+            <em>Model Prose:</em> "${s.script}"
+          </p>
+        </div>
+      `).join('');
+
+      ePreview.innerHTML = ESSAY_STEPS.map(s => `
+        <div style="border-bottom: 1px solid var(--border); padding-bottom: 10px;">
+          <strong style="color: var(--ochre); display: block; font-size: 0.78rem;">${s.step} [${s.scholar}]</strong>
+          <span>${s.script}</span>
+        </div>
+      `).join('');
+
+      updateProgressUI();
+    }
+
+    function escapeQuotes(str) {
+      return str.replace(/'/g, "\\'").replace(/"/g, '&quot;');
+    }
+
+    // ==========================================
+    // 4. AUDIO SYNTHESIS (432Hz SINGING BOWL) & TTS
+    // ==========================================
+    let audioCtx = null;
+    function playSingingBowl(fullChime = true) {
+      try {
+        if (!audioCtx) {
+          audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+        }
+        if (audioCtx.state === 'suspended') {
+          audioCtx.resume();
+        }
+        const now = audioCtx.currentTime;
+        const freqs = fullChime ? [432, 648, 864] : [528, 792];
+        const duration = fullChime ? 3.2 : 1.4;
+
+        freqs.forEach((f, idx) => {
+          const osc = audioCtx.createOscillator();
+          const gain = audioCtx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(f, now);
+
+          const startGain = (0.14 / (idx + 1));
+          gain.gain.setValueAtTime(0.001, now);
+          gain.gain.exponentialRampToValueAtTime(startGain, now + 0.06);
+          gain.gain.exponentialRampToValueAtTime(0.0001, now + duration);
+
+          osc.connect(gain);
+          gain.connect(audioCtx.destination);
+          osc.start(now);
+          osc.stop(now + duration);
+        });
+      } catch (e) {
+        console.log('Web Audio API bypassed');
+      }
+    }
+
+    function speakText(text) {
+      if (!('speechSynthesis' in window)) {
+        showToast('Speech synthesis not supported in this browser.');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(text);
+      utter.rate = 0.98;
+      utter.pitch = 1.0;
+      const voices = window.speechSynthesis.getVoices();
+      const preferred = voices.find(v => v.name.includes('Samantha') || v.name.includes('Moira') || v.name.includes('Daniel') || v.name.includes('Natural'));
+      if (preferred) utter.voice = preferred;
+      window.speechSynthesis.speak(utter);
+      showToast('🎙️ Playing Studio Voiceover...');
+    }
+
+    function readActiveSection() {
+      if (!('speechSynthesis' in window)) return;
+      if (window.speechSynthesis.speaking) {
+        window.speechSynthesis.cancel();
+        document.getElementById('btn-voice').classList.remove('active-toggle');
+        showToast('⏹️ Voiceover paused');
+        return;
+      }
+      document.getElementById('btn-voice').classList.add('active-toggle');
+      const activePanel = document.querySelector('.tab-panel.active').id;
+      let script = '';
+      if (activePanel === 'tab-paradigms') {
+        script = 'Pillar 1: The 8 Conceptual Paradigms. Remember the Agrawal trap: always state the contrast, then explain that the true divide is political power. ' +
+          PARADIGMS.map(p => p.title + '. ' + p.essential).join(' ');
+      } else if (activePanel === 'tab-dilemmas') {
+        script = 'Pillar 2: The 10 High-Yield Exam Dilemmas. ' +
+          DILEMMAS.map(d => d.title + '. ' + d.essential).join(' ');
+      } else if (activePanel === 'tab-thinkers') {
+        script = 'Pillar 3: Core Thinkers and Policies. ' +
+          THINKERS.map(t => t.name + '. ' + t.essential).join(' ');
+      } else {
+        script = 'Pillar 4: Complete INL270 Model Essay Script. ' +
+          ESSAY_STEPS.map(s => s.script).join(' ');
+      }
+      speakText(script);
+    }
+
+    function speakFullEssay() {
+      const fullText = ESSAY_STEPS.map(s => s.script).join(' ');
+      speakText(fullText);
+    }
+
+    // ==========================================
+    // 5. UI CONTROLS (TABS, THEME, ESSENTIALS, COPY)
+    // ==========================================
+    function switchTab(tabKey, btnEl) {
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.getElementById('tab-' + tabKey).classList.add('active');
+      btnEl.classList.add('active');
+      playSingingBowl(false);
+    }
+
+    function toggleEssentials() {
+      isEssentials = !isEssentials;
+      document.body.classList.toggle('essentials-mode', isEssentials);
+      document.getElementById('btn-essentials').classList.toggle('active-toggle', isEssentials);
+      showToast(isEssentials ? '🌿 Essentials Mode ON: Zero fluff, pure keywords' : '📖 Full Depth Mode restored');
+    }
+
+    function toggleTheme() {
+      const html = document.documentElement;
+      const current = html.getAttribute('data-theme');
+      const next = current === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      document.getElementById('btn-theme').textContent = next === 'dark' ? '☀️ Light' : '🌙 Dark';
+    }
+
+    function fallbackCopy(text) {
+      const ta = document.createElement('textarea');
+      ta.value = text;
+      ta.style.position = 'fixed';
+      ta.style.opacity = '0';
+      document.body.appendChild(ta);
+      ta.select();
+      try {
+        document.execCommand('copy');
+        showToast('📋 Full Essay Blueprint copied to Apple Notes!');
+        playSingingBowl(false);
+      } catch (e) {
+        showToast('Selection ready — press Ctrl+C / Cmd+C');
+      }
+      document.body.removeChild(ta);
+    }
+
+    function copyEssayToNotes() {
+      const text = `# INL270 Master Essay Blueprint (House Model)\n\n` +
+        ESSAY_STEPS.map(s => `### ${s.step}\n**Cite:** ${s.scholar}\n${s.script}\n`).join('\n');
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(() => {
+          showToast('📋 Full Essay Blueprint copied to Apple Notes!');
+          playSingingBowl(false);
+        }).catch(() => fallbackCopy(text));
+      } else {
+        fallbackCopy(text);
+      }
+    }
+
+    function showToast(msg) {
+      const t = document.getElementById('toast');
+      t.textContent = msg;
+      t.classList.add('show');
+      setTimeout(() => t.classList.remove('show'), 2800);
+    }
+
+    // Live Exam Countdown
+    function updateCountdown() {
+      const examDate = new Date('2026-10-16T12:30:00+02:00').getTime();
+      const now = Date.now();
+      const diff = examDate - now;
+      const pill = document.getElementById('countdown-pill');
+      if (diff > 0) {
+        const hrs = Math.floor(diff / (1000 * 60 * 60));
+        const mins = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        pill.textContent = `⏳ ${hrs}h ${mins}m to ST2 • Lockout 12:40`;
+      } else {
+        pill.textContent = `🌟 Exam Day — You've Got This!`;
+      }
+    }
+
+    // Initialize Sanctuary
+    window.addEventListener('DOMContentLoaded', () => {
+      renderAll();
+      updateCountdown();
+      setInterval(updateCountdown, 60000);
+    });
+  </script>
 </body>
 </html>
