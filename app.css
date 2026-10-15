@@ -1,0 +1,171 @@
+/* INL270 Sanctuary — Apple Glass & Ceremonial Earth Design Tokens */
+
+:root {
+  --bg-primary: #F9F6F0;
+  --bg-card: rgba(244, 239, 231, 0.82);
+  --bg-card-hover: rgba(248, 244, 238, 0.95);
+  --border-glass: rgba(60, 50, 40, 0.08);
+  --border-accent: rgba(200, 109, 81, 0.25);
+  --text-main: #24211E;
+  --text-muted: #6B635B;
+  --text-subtle: #8C847A;
+  --accent-ochre: #C86D51;
+  --accent-ochre-light: rgba(200, 109, 81, 0.12);
+  --accent-sage: #3D5A45;
+  --accent-sage-light: rgba(61, 90, 69, 0.12);
+  --accent-sand: #E6DFD3;
+  --card-shadow: 0 10px 30px -10px rgba(60, 50, 40, 0.07), 0 1px 3px rgba(60, 50, 40, 0.04);
+  --dock-shadow: 0 16px 40px -8px rgba(45, 35, 25, 0.15), 0 0 1px rgba(0, 0, 0, 0.1);
+  --spring-ease: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.dark {
+  --bg-primary: #121110;
+  --bg-card: rgba(26, 24, 22, 0.85);
+  --bg-card-hover: rgba(34, 31, 28, 0.95);
+  --border-glass: rgba(255, 255, 255, 0.07);
+  --border-accent: rgba(224, 132, 101, 0.3);
+  --text-main: #EDE8E1;
+  --text-muted: #A39B91;
+  --text-subtle: #7A7268;
+  --accent-ochre: #E08465;
+  --accent-ochre-light: rgba(224, 132, 101, 0.16);
+  --accent-sage: #5B8266;
+  --accent-sage-light: rgba(91, 130, 102, 0.16);
+  --accent-sand: #242220;
+  --card-shadow: 0 14px 42px -12px rgba(0, 0, 0, 0.55), 0 1px 2px rgba(255, 255, 255, 0.05);
+  --dock-shadow: 0 20px 50px -10px rgba(0, 0, 0, 0.7), 0 0 1px rgba(255, 255, 255, 0.15);
+}
+
+/* Base Body Setup */
+html, body {
+  min-height: 100dvh;
+  background-color: var(--bg-primary);
+  color: var(--text-main);
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Inter", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Editorial Serif */
+.font-serif-editorial {
+  font-family: "Fraunces", "New York", "Charter", Georgia, serif;
+  letter-spacing: -0.025em;
+  font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+}
+
+/* Glassmorphism Containers */
+.glass-panel {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(24px);
+  -webkit-backdrop-filter: blur(24px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--card-shadow);
+  border-radius: 1.5rem;
+  transition: all 0.35s var(--spring-ease);
+}
+
+.glass-panel:hover {
+  border-color: var(--border-accent);
+}
+
+.glass-dock {
+  background-color: var(--bg-card);
+  backdrop-filter: blur(28px);
+  -webkit-backdrop-filter: blur(28px);
+  border: 1px solid var(--border-glass);
+  box-shadow: var(--dock-shadow);
+}
+
+/* Ambient Breathing Background Blobs */
+.ambient-glow-1 {
+  position: fixed;
+  top: -15%;
+  right: -10%;
+  width: 55vw;
+  height: 55vw;
+  max-width: 650px;
+  max-height: 650px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(200, 109, 81, 0.09) 0%, rgba(200, 109, 81, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatSlow 22s ease-in-out infinite alternate;
+}
+
+.ambient-glow-2 {
+  position: fixed;
+  bottom: -15%;
+  left: -10%;
+  width: 50vw;
+  height: 50vw;
+  max-width: 600px;
+  max-height: 600px;
+  border-radius: 9999px;
+  background: radial-gradient(circle, rgba(61, 90, 69, 0.08) 0%, rgba(61, 90, 69, 0) 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  z-index: 0;
+  animation: floatSlow 26s ease-in-out infinite alternate-reverse;
+}
+
+@keyframes floatSlow {
+  0% { transform: translate(0, 0) scale(1); }
+  50% { transform: translate(25px, -20px) scale(1.05); }
+  100% { transform: translate(-20px, 20px) scale(0.98); }
+}
+
+/* Tactile Active Physics */
+.tap-bounce {
+  transition: transform 0.2s var(--spring-ease), opacity 0.2s ease;
+}
+.tap-bounce:active {
+  transform: scale(0.97);
+}
+
+/* Card Transitions */
+.tab-content {
+  animation: fadeInBloom 0.4s var(--spring-ease) forwards;
+}
+
+@keyframes fadeInBloom {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.99);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+/* Accordion Bloom for Reveal */
+.bloom-reveal {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.5s var(--spring-ease), opacity 0.4s ease, padding 0.3s ease;
+}
+.bloom-reveal.open {
+  max-height: 800px;
+  opacity: 1;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(140, 132, 122, 0.25);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(140, 132, 122, 0.45);
+}
