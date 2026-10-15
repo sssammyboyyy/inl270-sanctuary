@@ -1,157 +1,48 @@
-# INL270 Sanctuary — Master Project Specification & Plan
+# INL270 Sanctuary — Master Specification & Architectural Plan
 
-> **Project:** INL270 Sanctuary — Indigenous Knowledge Interactive Cram & Scenario Simulator  
-> **Repository:** [github.com/sssammyboyyy/inl270-sanctuary](https://github.com/sssammyboyyy/inl270-sanctuary)  
-> **Target Audience:** An overwhelmed student with ADHD who deeply values aesthetics (Apple user) and needs high-leverage, experiential conceptual mastery.  
-> **Exam Date & Time:** Friday, 16 October 2026, 12:30–14:00 (Venue lockout strictly at +10 min).  
-> **Module:** INL270 (Indigenous Knowledge), Semester Test 2 (University of Pretoria / ClickUP).
+## 1. Executive Context & Constraints
+- **Target Exam:** INL270 Semester Test 2 — Tomorrow, 16 October 2026, 12:30–14:00 (Strict venue lockout at 12:40).
+- **Core Objective:** An ADHD-optimized, zero-friction, Apple-grade study sanctuary engineered to lower cortisol, eliminate walls of text, and lock in high-yield marking triggers through spatial memory, audio synthesis, and tactile interaction.
+- **Architectural Mandate:** Zero-build, offline-first single-file web application (`index.html`) ready for instant deployment via GitHub Pages or local Safari Home Screen installation.
 
----
+## 2. Curriculum Ground Truth (Audited against INL270 Sources)
+### A. 8 Core Conceptual Paradigms
+1. **Relational Holism vs. Cartesian Dualism:** Emeagwali & Dei (2014) — Holistic interconnections of body, mind, soul, spirit, and Land vs. Western nature/culture commodification.
+2. **Dynamic Lived Experimentation vs. Frozen Lore:** Flavier et al. (1995) & Warren (1991) — Continuous internal experimentation cycle vs. colonial myth of static tradition.
+3. **Tacit Context-Embeddedness vs. Codified Universalism:** World Bank (1998) — Knowledge embedded in community practices and rituals vs. decontextualized lab abstractions.
+4. **Communal Fiduciary Custodianship vs. Individual Ownership:** *Bulun Bulun v R & T Textiles* (1998) — Equitable fiduciary duty to the Ganalbingu clan vs. alienable single-inventor monopolies.
+5. **In-Situ Living Practice vs. Ex-Situ Archival Extraction:** Agrawal (1995) — The Archiving Paradox: central databanks strip context and create a "mausoleum for knowledge."
+6. **Relational Revocable Consent vs. Transactional Waiver:** Garrison (2013) — Ongoing, collective genomic justice (*Havasupai*) vs. one-time signed forms used for scope-creep.
+7. **Methodological Pluralism vs. Demarcation Hierarchy:** Agrawal (1995) — Popper, Lakatos, and Feyerabend proved no strict demarcation criterion separates science from non-science.
+8. **Power Asymmetry vs. Epistemic Neutrality:** Agrawal (1996 *Tanggapan*) — The true divide is not epistemological; it is defined by relationship to power and resource control.
 
-## 1. Executive Summary & Context
+### B. 10 High-Yield Exam Dilemmas & Empirical Cases
+1. **D1: Extractive Biomedical Scope-Creep (*Havasupai Tribe v. ASU*)** — $700k settlement, 412 blood samples repatriated (2010), ban on ASU researchers after diabetes blood was used for schizophrenia, inbreeding, and Bering Strait migration studies.
+2. **D2: Sacred Art on Commercial Goods (*Milpurrurru v Indofurn* 1994)** — Vietnamese-made carpets copied 8 Aboriginal artists' Dreamtime works; $189,000 awarded including collective "cultural harm."
+3. **D3: Clan Title vs. Individual Copyright (*Bulun Bulun v R & T Textiles* 1998)** — Sacred waterhole design (*Atunypa*); court established an equitable **fiduciary duty** from artist to clan.
+4. **D4: Pharmaceutical Biopiracy (Venezuelan *Curare* & SA *Hoodia*)** — Alkaloid d-tubocurarine isolated from Amazonian arrow poison without PIC or benefit-sharing under the Nagoya Protocol.
+5. **D5: The Ex-Situ Digitization Trap (Agrawal vs. India's TKDL)** — Open-access publication destroys novelty and invites theft; solved via defensive, closed patent-examiner databases (TKDL) and NMAI role-based access tiers (Hunter 2005).
+6. **D6: Decolonizing the Classroom (Emeagwali Model A vs. Model B)** — Teacher-centered textbook "hostages to text" (Model A) vs. student-centered, problem-oriented community praxis (Model B) and Semali's lived Nyererean classroom conflict.
+7. **D7: Virtual Repatriation & Customary Secrecy (Smithsonian NMAI & *Ara Irititja*)** — Jane Hunter's "Spiral of Knowledge" and MPEG-21/XrML rights metadata enforcing gender, clan, and initiation restrictions.
+8. **D8: Origin-Linked Agricultural Value (*Criollo* Cacao GIs)** — Dutfield (2020): Geographical Indications protect collective, terroir-bound community practices in perpetuity, unlike 20-year patents.
+9. **D9: Digital Gatekeeping (Wikipedia's Oral Citation Catch-22)** — Winschiers-Theophilus & Gallert: Ovaherero elders blocked from editing Wikipedia because oral history lacks "secondary Western published sources."
+10. **D10: Gendered Erasure vs. Custodianship (SA IKS Policy & World Bank)** — Malicounda (Senegal) women ending FGM, Ibo postpartum care, and SA 2004 IKS Policy (Sec 2.7) accrediting women via NIKSO and the NQF.
 
-The learner is passionate about Indigenous Knowledge (IK), but is currently paralyzed by cognitive overload, high stress, and having another test scheduled alongside this one. 
+## 3. Aesthetic & Sensory System
+- **Palette ("Ceremonial Earth & Apple Glass"):**
+  - Light Sanctuary: `#F9F6F0` (Warm Bone), `#C86D51` (Terracotta Ochre), `#3D5A45` (Botanical Sage), `#1E1E1C` (Deep Charcoal Ink).
+  - Obsidian Night: `#121312` (Soft Obsidian), `#1C1E1C` (Elevated Glass Surface), `#E08266` (Luminous Ochre), `#6B9E78` (Luminous Sage).
+- **Typography:** Editorial Serif (`Fraunces` / `New York` / `Georgia`) for headings and conceptual anchors; clean sans-serif (`SF Pro Display` / `Inter` / `system-ui`) for scannable micro-bullets.
+- **Visual Assets:** Graceful integration of `./elder.png`, `./transfer.png`, `./women.png`, and `./yurt.png` with automatic CSS fallback art so the layout never breaks if an image path shifts.
 
-Because Indigenous Knowledge Systems (IKS) are grounded in ontology (ways of being), epistemology (ways of knowing), relationality, and lived ethics, rote memorization of bullet points fails. The exam specifically tests **comparative analysis, ethical dilemmas, case law/biopiracy, and essay argumentation**.
-
-This application is engineered as a tranquil, Apple-grade "Sanctuary" that converts overwhelming slides into an intuitive, tactile, multi-sensory experience that can be mastered in under 60 minutes.
-
----
-
-## 2. Academic Core & Course Ground Truth
-
-### A. The 8 Core Conceptual Paradigms (Contrast Pairs)
-1. **Relational Ontology vs. Cartesian Dualism:**
-   * *IK:* Land, ancestors, spirits, humans, and more-than-human kin exist in one interconnected moral web. Knowledge lives in relationship.
-   * *Western:* Mind vs. matter, nature vs. culture, subject vs. object. Land is treated as inert extractable resource.
-2. **Holism vs. Reductionism:**
-   * *IK:* Validated by lived outcomes in context (does it heal? Does it sustain life?).
-   * *Western:* Isolates single variables in a sterile laboratory and claims universal application.
-3. **Cyclical / Regenerative Time vs. Linear Progress:**
-   * *IK:* Governed by seasons, generations, and the 7th Generation Principle (actions must sustain descendants 7 generations out).
-   * *Western:* Linear timeline measuring development from "primitive/traditional" to "modern".
-4. **Collective Stewardship vs. Individual IP / Patents:**
-   * *IK:* Held collectively across generations and governed by customary trust.
-   * *Western:* 20-year temporary monopoly awarded to a single identifiable inventor for commercial exploitation.
-5. **Oral, Embodied Transmission vs. Codified Archives:**
-   * *IK:* Knowledge is preserved through practice, ritual, storytelling, and apprenticeship with elders.
-   * *Western:* Preserved in static texts, journals, patents, and servers.
-6. **In-Situ Living Knowledge vs. Ex-Situ Extraction (*The Agrawal Paradox*):**
-   * *The Core Exam Insight:* Arun Agrawal argues that archiving IK in national databases contradicts the very nature of indigeneity. Preservation requires community control over land and resources in-situ.
-7. **Consent-as-Relationship vs. Consent-as-Form (*The Havasupai Lesson*):**
-   * *Havasupai Blood Case:* A signed form for diabetes research did not authorize schizophrenia or migration studies that contradicted emergence narratives. Consent must be ongoing, collective, and revocable.
-8. **Belonging & Customary Care vs. Fortress Conservation:**
-   * Fencing communities out of ancestral land degrades ecosystems; true conservation requires co-management and community mapping (UNESCO LINKS).
-
-### B. Key Thinkers & Institutional Anchors
-* **Arun Agrawal:** Dismantled the "traditional vs. scientific" dichotomy; showed that archiving IK without land rights is a contradiction.
-* **Jane Hunter:** IT for IK management, the *Spiral of Knowledge* model, virtual repatriation (Smithsonian NMAI), and elder-governed access tiers.
-* **Lishan Adam:** ICT must serve oral, dynamic, and local community structures; top-down databases fail.
-* **Graham Dutfield:** Analyzed how Western patent regimes structurally exclude collective, trans-generational indigenous art (biopiracy).
-* **Darrell Posey:** Pioneer of traditional resource rights and spiritual values of biodiversity.
-* **N. Garrison:** Genomic justice, collective consent, and the repatriation of biological samples.
-* **WIPO IGC & Nagoya Protocol:** International legal frameworks for Prior Informed Consent (PIC) and Access & Benefit-Sharing (ABS).
-* **South African IKS Policy (2004) & IK Act (2019):** Institutional recognition and protection of traditional medicine and biocultural heritage.
-
-### C. The 10 High-Yield Exam Dilemmas (Scenarios)
-1. **D1 · The Curare Patent (Biopiracy Classic):** Pharmaceutical isolation vs. Amazonian customary ownership. (*Keywords: biopiracy, prior informed consent, benefit-sharing, prior art*).
-2. **D2 · Fortress Conservation vs. Customary Management:** Evicting communities to protect parks vs. customary stewardship. (*Keywords: fortress conservation, co-management, customary law, community mapping*).
-3. **D3 · The Havasupai Blood (Extractive Academia):** Research scope creep and spiritual harm. (*Keywords: informed consent, collective consent, spiritual harm, repatriation*).
-4. **D4 · TKDL Digitization Without Control:** Making sacred recipes public vs. defensive protection. (*Keywords: defensive publication, access tiers, misappropriation, sui generis*).
-5. **D5 · Geographical Indication (Criollo Cacao / Rooibos):** Protecting community crop reputation from multinational brands. (*Keywords: geographical indication, collective trademark, value capture*).
-6. **D6 · Decolonizing University Curricula:** The demarcation problem and epistemic justice in academia. (*Keywords: demarcation problem, epistemic justice, co-production*).
-7. **D7 · Smithsonian NMAI Virtual Repatriation:** Returning sacred masks virtually with elder-set access tiers. (*Keywords: virtual repatriation, NAGPRA, culturally sensitive care, Spiral of Knowledge*).
-8. **D8 · ICT Rollout in Oral Communities:** Telecentres and audio-visual tools vs. top-down text databases. (*Keywords: appropriate technology, orality, telecentres, top-down failure*).
-9. **D9 · Traditional Healers in Public Health:** Valuing healers on equal footing vs. treating them as clinic referral couriers. (*Keywords: mainstreaming, valuation, participation ladder, traditional medicine*).
-10. **D10 · Gendered Ecological Knowledge (Standing Rock):** Bypassing women's seed and water leadership. (*Keywords: gendered knowledge, FPIC, intersectionality, seed stewardship*).
-
-### D. The Compulsory Essay Skeleton ("The House Model")
-1. **Introduction:** Define IK, introduce the tension with Western frameworks, 1-line roadmap.
-2. **Theoretical Grounding:** Contrast one conceptual pair and integrate Agrawal's critique.
-3. **Policy / Institutional Layer:** Cite one framework (WIPO, Nagoya, or SA IKS Policy).
-4. **Case Study Application:** One Southern African case (San Hoodia / Rooibos) + one comparative case (Havasupai / TKDL).
-5. **Risks & Evaluation:** Pitfalls of ex-situ digitization and commercial co-optation.
-6. **Recommendations:** Community-controlled access tiers, sui generis IP, and legal benefit-sharing.
-7. **Conclusion & Reflection:** Summarize the paradigm shift from extraction to relationality.
-
----
-
-## 3. Aesthetics & Design System ("Ceremonial Earth & Apple Glass")
-
-### Visual References & DNA
-* **Craft Docs & Apple Books:** Pure whitespace, unhurried typography, and distraction-free reading.
-* **How We Feel (Apple Design Award Winner):** Soft organic ambient gradients, rounded tactile chips, and anti-anxiety calming layout.
-* **The Pudding / NYT Interactive:** Scenario $\rightarrow$ choice $\rightarrow$ accordion bloom revealing the underlying truth.
-* **Watercolor Heritage Assets:** Hand-painted illustrations (`elder.png`, `transfer.png`, `women.png`, `yurt.png`) integrated organically into card headers.
-
-### Color Tokens
-```css
-/* Light Mode: Woven Linen & Red Ochre */
---bg-primary: #F9F6F0;           /* Warm unbleached bone parchment */
---bg-card: rgba(240, 234, 225, 0.85); /* Frosted elevated glass */
---border-glass: rgba(60, 50, 40, 0.08); /* 0.5px hairline boundary */
---text-main: #24211E;            /* Soft charcoal/warm bark */
---text-muted: #6B635B;           /* Muted clay */
---accent-ochre: #C86D51;         /* Ceremonial terracotta ochre */
---accent-sage: #3D5A45;          /* Forest spruce / harmony */
-
-/* Dark Mode: Obsidian Campfire */
---bg-dark: #121110;              /* Basalt black */
---card-dark: rgba(28, 26, 24, 0.85); /* Deep volcanic frosted glass */
---text-dark: #EDE8E1;            /* Soft warm linen */
---accent-ochre-dark: #E08465;    /* Warm ember */
---accent-sage-dark: #5B8266;     /* Soft spruce */
-```
-
-### Typography
-* **Display / Headings:** `"Fraunces"`, `"New York"`, `"Charter"`, serif.
-* **Body & UI:** `-apple-system`, `BlinkMacSystemFont`, `"Inter"`, `"SF Pro Text"`, sans-serif.
-
----
-
-## 4. Interaction & ADHD Sensory Blueprint
-
-1. **Zero-Friction Entry:** No logins, no scores, no setup. Opens instantly in Safari or Chrome.
-2. **Panic Dissolver FAB:** A persistent header toggle (`🌿 Essentials Only`) that instantly hides peripheral themes and filters down to the 4 essential exam topics.
-3. **Single-Card Focus Viewport:** Cards sized for modern mobile viewports (`100dvh`), eliminating endless scrolling paralysis.
-4. **Web Audio Organic Chimes:** Zero-latency synthetic singing-bowl harmonic frequencies generated via Web Audio API on card flips.
-5. **Safari Native Web Speech API:** "Listen" button on every scenario reads out the case in a calm voice so she can rest her eyes.
-6. **The 3-Tab Architecture:**
-   * **Tab 1: Compass** (8 Paradigm Sliders).
-   * **Tab 2: Dilemmas** (10 POV Interactive Scenarios).
-   * **Tab 3: Essay Forge** (House Model Builder with 1-tap "Copy to Apple Notes").
-
----
-
-## 5. Technical Architecture & File Layout
-
-The application is built inside `product/inl270-sanctuary/` as a pure, zero-build, offline-capable PWA:
-
-```
-product/inl270-sanctuary/
-├── assets/
-│   ├── elder.png
-│   ├── transfer.png
-│   ├── women.png
-│   └── yurt.png
-├── index.html              # Core semantic HTML shell & Apple PWA metadata
-├── app.css                 # Custom glassmorphism, typography, and animation tokens
-├── data.js                 # Complete structured dataset (Paradigms, Dilemmas, Essay)
-├── app.js                  # Audio engine, Speech synthesis, Tab routing & DOM state
-├── manifest.webmanifest    # Apple PWA standalone support
-├── README.md               # Quickstart guide
-└── PLAN.md                 # This master plan document
-```
-
----
-
-## 6. Verification & Quality Checklist
-
-- [x] Pre-tool hooks unblocked and git repository initialized.
-- [x] Repository pushed to `github.com/sssammyboyyy/inl270-sanctuary`.
-- [x] Course assets verified and copied to local assets directory.
-- [ ] `data.js` populated with all 8 paradigms, 10 dilemmas, and essay skeleton.
-- [ ] `index.html` and `app.css` styled to "Ceremonial Earth & Apple Glass" spec.
-- [ ] `app.js` implementing Web Audio API synthetic chimes and Web Speech API narrator.
-- [ ] Mobile Safari test simulation (`100dvh`, gesture navigation, zero console errors).
-- [ ] Final commit and push to GitHub.
+## 4. Interaction & Audio Architecture
+- **Persistent Top Bar:**
+  - Live Countdown & Lockout Alert (`16 Oct 12:30 — Lockout 12:40`).
+  - `🌿 Essentials Only` Panic-Reduction Toggle: Collapses every card to a single 10-word gold-standard sentence + 3 grading keywords.
+  - `🥣 Singing Bowl` Web Audio API Synthesizer: Pure harmonic sine-wave resonance (432Hz + 648Hz + 864Hz) on tab switches and mastery checks.
+  - `🎙️ Broadcast / Voice-Over Mode`: Native Safari Web Speech API reader formatted as crisp, rhythmic radio scripts so she can listen eyes-closed or read out loud effortlessly.
+- **4 Core Interactive Modules:**
+  - **Tab 1: The Paradigm Compass** (Interactive split-pills with 1-tap "Agrawal Trap" reveal).
+  - **Tab 2: The Dilemma Simulator** (10 interactive case scenarios with POV toggle, Concrete Evidence badge, and Examiner's Marking Rubric).
+  - **Tab 3: The Thinker & Policy Matrix** (Ranked flashcards with instant 1-sentence frameworks).
+  - **Tab 4: The Essay Forge** (Interactive 8-paragraph house model builder + 1-tap "Copy to Apple Notes" & "Read Script Aloud").

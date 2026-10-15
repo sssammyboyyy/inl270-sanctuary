@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="theme-color" content="#F9F6F0" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#121110" media="(prefers-color-scheme: dark)">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="assets/elder.png">
+  <link rel="icon" type="image/png" href="assets/elder.png">
+
+  <title>INL270 Sanctuary — Indigenous Knowledge</title>
+
+  <!-- Typography: Fraunces (Editorial Serif) & Inter (Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700;9..144,900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            ochre: {
+              DEFAULT: '#C86D51',
+              dark: '#E08465'
+            },
+            sage: {
+              DEFAULT: '#3D5A45',
+              dark: '#5B8266'
+            }
+          }
+        }
+      }
+    };
+  </script>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="app.css">
+</head>
+<body class="antialiased select-none pb-28">
+
+  <!-- Ambient Background Glows -->
+  <div class="ambient-glow-1"></div>
+  <div class="ambient-glow-2"></div>
+
+  <!-- Sticky Minimal Frosted Header -->
+  <header class="sticky top-0 z-40 w-full glass-dock border-b border-stone-200/50 dark:border-stone-800/80 px-4 sm:px-6 h-16 flex items-center justify-between">
+    <!-- Branding & Exam Badge -->
+    <div class="flex items-center gap-3">
+      <div class="w-8 h-8 rounded-xl bg-[#C86D51]/10 dark:bg-[#E08465]/15 grid place-items-center text-base">
+        🌿
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <span class="font-serif-editorial font-bold text-base sm:text-lg tracking-tight">SANCTUARY</span>
+          <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-stone-200/60 dark:bg-stone-800 text-stone-600 dark:text-stone-300">
+            INL270
+          </span>
+        </div>
+        <p class="text-[10px] text-stone-500 dark:text-stone-400 font-medium hidden sm:block">
+          Semester Test 2 · Friday 16 Oct, 12:30
+        </p>
+      </div>
+    </div>
+
+    <!-- Controls (Essentials Filter, Audio, Dark Mode) -->
+    <div class="flex items-center gap-2">
+      <!-- Essentials Only Pill -->
+      <button id="btnEssentials" class="flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-[#3D5A45] transition tap-bounce shadow-2xs">
+        <span>🌿</span> <span class="hidden sm:inline">Essentials Only</span>
+      </button>
+
+      <!-- Audio Mute Toggle -->
+      <button id="btnAudioToggle" class="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-[#C86D51] transition tap-bounce shadow-2xs">
+        🔔 Sound On
+      </button>
+
+      <!-- Dark Mode Switcher -->
+      <button id="btnDarkToggle" class="flex items-center gap-1 px-2.5 py-1.5 rounded-full border border-stone-300/80 dark:border-stone-700 text-xs font-semibold text-stone-700 dark:text-stone-300 hover:border-stone-500 transition tap-bounce shadow-2xs">
+        🌙
+      </button>
+    </div>
+  </header>
+
+  <!-- Dynamic Content Container -->
+  <main id="appContent" class="relative z-10 pt-4 sm:pt-6">
+    <!-- Populated dynamically by app.js -->
+  </main>
+
+  <!-- Fixed Apple-Grade Floating Dock (Bottom Navigation) -->
+  <nav class="fixed bottom-5 left-1/2 -translate-x-1/2 z-40 w-[92%] max-w-md glass-dock rounded-full p-1.5 flex items-center justify-between border border-stone-200/70 dark:border-stone-800">
+    <button data-tab-target="compass" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-bold transition tap-bounce text-[#C86D51] dark:text-[#E08465]">
+      <span class="text-sm">🧭</span>
+      <span>Compass</span>
+    </button>
+    <button data-tab-target="dilemmas" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 transition tap-bounce hover:text-stone-900 dark:hover:text-stone-100">
+      <span class="text-sm">⚖️</span>
+      <span>Dilemmas</span>
+    </button>
+    <button data-tab-target="essay" class="flex-1 py-2.5 rounded-full flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-1.5 text-xs font-medium text-stone-600 dark:text-stone-400 transition tap-bounce hover:text-stone-900 dark:hover:text-stone-100">
+      <span class="text-sm">✍️</span>
+      <span>Essay Forge</span>
+    </button>
+  </nav>
+
+  <!-- Load Data & Application Logic -->
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
